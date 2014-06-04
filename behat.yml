@@ -1,0 +1,5 @@
+default:
+    extensions:
+        Behat\MinkExtension\ServiceContainer\MinkExtension:
+            goutte: ~
+            base_url: http://fft-bdd.texthtml.net/
