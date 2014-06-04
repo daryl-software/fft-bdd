@@ -26,15 +26,15 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext
      */
     public function bobIsOnTheTicketCreationPage()
     {
-        throw new PendingException();
+        $this->visit('new_ticket.php');
     }
 
     /**
-     * @Given he fill :arg1 with :arg2
+     * @Given he fill :field with :value
      */
-    public function heFillWith($arg1, $arg2)
+    public function heFillWith($field, $value)
     {
-        throw new PendingException();
+        $this->fillField($field, $value);
     }
 
     /**
