@@ -38,18 +38,18 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext
     }
 
     /**
-     * @When he press :arg1
+     * @When he press :button
      */
-    public function hePress($arg1)
+    public function hePress($button)
     {
-        throw new PendingException();
+        $this->pressButton($button);
     }
 
     /**
-     * @Then he should see :arg1
+     * @Then he should see :text
      */
-    public function heShouldSee($arg1)
+    public function heShouldSee($text)
     {
-        throw new PendingException();
+        $this->assertPageContainsText($text);
     }
 }
