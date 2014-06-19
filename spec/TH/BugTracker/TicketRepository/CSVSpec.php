@@ -38,4 +38,17 @@ name,description
 CSV
         );
     }
+
+    function it_should_find_tickets() {
+        file_put_contents($this->file->getPathname(), <<<CSV
+name,description
+"Ticket 1","Ticket 1 description"
+"Ticket 2","Ticket 2 description"
+
+CSV
+        );
+
+        $ticket = new Ticket('Ticket 1', 'Ticket 1 description');
+        $this->find('Ticket 1')->shouldBeLike($ticket);
+    }
 }
