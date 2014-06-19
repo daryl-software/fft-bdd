@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "42ab00ec0c922b6dd139c92968ee073a",
+    "hash": "e27458bc2f6da53ce2c54e5af52d1cd6",
     "packages": [
 
     ],
@@ -664,6 +664,56 @@
                 "stream"
             ],
             "time": "2014-05-01 21:36:02"
+        },
+        {
+            "name": "php-vfs/php-vfs",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thornag/php-vfs.git",
+                "reference": "d0feda963fc440349b401158f148c6cdfc8aa857"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thornag/php-vfs/zipball/d0feda963fc440349b401158f148c6cdfc8aa857",
+                "reference": "d0feda963fc440349b401158f148c6cdfc8aa857",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "sami/sami": "*",
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "VirtualFileSystem": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Donat",
+                    "email": "michael.donat@me.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Virtual file system implementation for use with PHP unit testing.",
+            "homepage": "http://thornag.github.com/php-vfs",
+            "keywords": [
+                "filesystem",
+                "php",
+                "testing",
+                "unit",
+                "virtual"
+            ],
+            "time": "2014-05-12 09:12:30"
         },
         {
             "name": "phpspec/php-diff",
@@ -1527,7 +1577,8 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "behat/mink-extension": 20
+        "behat/mink-extension": 20,
+        "php-vfs/php-vfs": 0
     },
     "platform": [
 
