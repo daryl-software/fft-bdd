@@ -10,5 +10,8 @@
         "psr-0": {
             "TH\\BugTracker\\": "src"
         }
+    },
+    "require": {
+        "pimple/pimple": "~2.0"
     }
 }
