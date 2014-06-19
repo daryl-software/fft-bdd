@@ -15,7 +15,20 @@ class CSV implements TicketRepository
     }
 
     public function save(Ticket $ticket) {
-        $this->file->fputcsv(['name', 'description']);
-        $this->file->fputcsv([$ticket->name(), $ticket->description()]);
+        $this->file->fputcsv(['name', 'description', 'createdAt']);
+        $this->file->fputcsv([$ticket->name(), $ticket->description(), $ticket->createdAt()->format('c')]);
+    }
+
+    public function find($query)
+    {
+        $this->file->setFlags(\SplFileObject::READ_CSV);
+
+        foreach ($this->file as $line) {
+            list($name, $description, $createdAt) = $line;
+
+            if ($name === $query) {
+                return new Ticket($name, $description, new \DateTimeImmutable($createdAt));
+            }
+        }
     }
 }

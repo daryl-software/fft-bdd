@@ -13,6 +13,7 @@ class CSVSpec extends ObjectBehavior
     private $file;
 
     public function let() {
+        date_default_timezone_set('Europe/Paris');
         $this->fs = new FileSystem;
         $this->file = new \splFileObject($this->fs->path('/tickets.csv'), 'w+');
 
@@ -28,12 +29,13 @@ class CSVSpec extends ObjectBehavior
     function it_should_save_a_ticket(Ticket $ticket) {
         $ticket->name()->willReturn('Ticket 1');
         $ticket->description()->willReturn('Ticket 1 description');
+        $ticket->createdAt()->willReturn(new \DateTimeImmutable('2014-06-20 16:00:00'));
 
         $this->save($ticket);
 
         assert(file_get_contents($this->file->getPathname()) === <<<CSV
-name,description
-"Ticket 1","Ticket 1 description"
+name,description,createdAt
+"Ticket 1","Ticket 1 description",2014-06-20T16:00:00+02:00
 
 CSV
         );
@@ -41,14 +43,14 @@ CSV
 
     function it_should_find_tickets() {
         file_put_contents($this->file->getPathname(), <<<CSV
-name,description
-"Ticket 1","Ticket 1 description"
-"Ticket 2","Ticket 2 description"
+name,description,createdAt
+"Ticket 1","Ticket 1 description",2014-06-20T16:00:00+02:00
+"Ticket 2","Ticket 2 description",2014-06-20T16:10:00+02:00
 
 CSV
         );
 
-        $ticket = new Ticket('Ticket 1', 'Ticket 1 description');
+        $ticket = new Ticket('Ticket 1', 'Ticket 1 description', new \DateTimeImmutable('2014-06-20 16:00:00'));
         $this->find('Ticket 1')->shouldBeLike($ticket);
     }
 }
